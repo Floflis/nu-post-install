@@ -6,7 +6,7 @@ if [ "$(echo ${script_name##*.})" = "nu" ]; then
    gnome-terminal --tab --title="Nu Script Handler" -- /bin/nu -c "nu $1; exec nu"
 else
    echo "---- Nu Script Handler ----"
-   echo "The file you tried to open isn't an nu script."
+   echo "The file you tried to open isn't a nu script."
    echo "Nu scripts are .nu files."
 fi
 

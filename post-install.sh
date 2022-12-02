@@ -1,7 +1,6 @@
 #!/bin/sh
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-
 flouser=$(logname)
 
 echo "Installing mimetypes for .nu files..." # this is continuously adding the same entries to /etc/mime.types and have to be fixed
