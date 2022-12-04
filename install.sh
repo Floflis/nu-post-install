@@ -7,6 +7,7 @@ echo "Installing mimetypes for .nu files..." # this is continuously adding the s
 cat >> /etc/mime.types <<EOF
 application/x-nu			        nu
 EOF
+#-<- should check if line is already added, before re-adding!
 cat > /usr/share/mime/packages/x-nu.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
@@ -23,8 +24,7 @@ sudo gtk-update-icon-cache /usr/share/icons/gnome/ -f
 
 echo "Installing icons for .nu files..."
 
-git clone https://github.com/DaniellMesquita/linux-icon-builder.git
-#git clone https://github.com/floflis/linux-icon-builder.git
+git clone https://github.com/Floflis/linux-icon-builder.git
 
 cd linux-icon-builder
 sh ./linux-icon-builder "$SCRIPTPATH/rsc/img/application-x-nu.png" "mimetypes" "application-x-nu.png"
@@ -40,9 +40,7 @@ cd "$SCRIPTPATH"
 rm -rf linux-icon-builder
 
 echo "Installing handler for .nu files..."
-
 echo "Installing nu-script-handler..."
-
 sudo cp -f nu-script-handler /usr/bin/nu-script-handler
 
 echo "Installing shortcut in /usr/share/applications..."
@@ -60,6 +58,7 @@ echo "Turning nu-script-handler into the default program (to user $flouser) for 
 cat >> /home/$flouser/.config/mimeapps.list <<EOF
 application/x-nu=nu-script-handler.desktop
 EOF
+#-<- should check if line is already added, before re-adding!
 
 installfail(){
    echo "Installation has failed."
