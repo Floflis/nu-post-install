@@ -52,6 +52,7 @@ Exec=nu-script-handler %f
 Icon=application-x-executable
 StartupNotify=false
 MimeType=application-x-nu;
+NoDisplay=true
 EOF
 
 echo "Turning nu-script-handler into the default program (to user $flouser) for .nu scripts..."
