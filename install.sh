@@ -29,12 +29,7 @@ if [ -e .git ]; then git pull; fi
 git checkout -f
 sh ./linux-icon-builder "$SCRIPTPATH/rsc/img/application-x-nu.png" "mimetypes" "application-x-nu.png"
 cd icons
-#-
-if [ ! -e /usr/share/icons/Floflis ]; then
-   cp -r -f --preserve=all . /usr/share/icons/Yaru/
-else
-   cp -r -f --preserve=all . /usr/share/icons/ubuntu/Yaru/
-fi
+cp -r -f --preserve=all . /usr/share/icons/hicolor/
 cd "$SCRIPTPATH"
 rm -rf linux-icon-builder
 
