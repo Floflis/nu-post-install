@@ -4,6 +4,7 @@ script_name="$(basename "$1")"
 
 if [ "$(echo ${script_name##*.})" = "nu" ]; then
    gnome-terminal --tab --title="Nu Script Handler" -- /bin/nu -c "nu $1; exec nu"
+   #IMPORTANT: later use /media/daniella/B/git/Floflis/Utilities/app-selector/app-selector-terminal
 else
    echo "---- Nu Script Handler ----"
    echo "The file you tried to open isn't a nu script."
