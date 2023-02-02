@@ -3,6 +3,12 @@
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 flouser=$(logname)
 
+echo "Installing Nushell config defaults..."
+if [ ! -e /home/${flouser}/.config/nushell ]; then mkdir /home/${flouser}/.config/nushell; fi
+cp include/config.nu /home/${flouser}/.config/nushell/
+cp include/env.nu /home/${flouser}/.config/nushell/
+touch /home/${flouser}/.config/nushell/history.txt
+
 echo "Installing mimetypes for .nu files..." # this is continuously adding the same entries to /etc/mime.types and have to be fixed
 cat >> /etc/mime.types <<EOF
 application/x-nu			        nu
@@ -20,7 +26,6 @@ cat > /usr/share/mime/packages/x-nu.xml <<EOF
 
 EOF
 sudo update-mime-database /usr/share/mime
-sudo gtk-update-icon-cache /usr/share/icons/gnome/ -f
 
 echo "Installing icons for .nu files..."
 cd include/linux-icon-builder
@@ -32,6 +37,7 @@ cd icons
 cp -r -f --preserve=all . /usr/share/icons/hicolor/
 cd "$SCRIPTPATH"
 rm -rf linux-icon-builder
+sudo gtk-update-icon-cache /usr/share/icons/gnome/ -f
 
 echo "Installing handler for .nu files..."
 echo "Installing nu-script-handler..."
