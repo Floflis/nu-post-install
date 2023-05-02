@@ -28,15 +28,9 @@ EOF
 sudo update-mime-database /usr/share/mime
 
 echo "Installing icons for .nu files..."
-cd include/linux-icon-builder
-if [ ! -e .git ]; then git clone --no-checkout https://github.com/Floflis/linux-icon-builder.git; fi
-if [ -e .git ]; then git pull; fi
-git checkout -f
-sh ./linux-icon-builder "$SCRIPTPATH/rsc/img/application-x-nu.png" "mimetypes" "application-x-nu.png"
-cd icons
-cp -r -f --preserve=all . /usr/share/icons/hicolor/
+cd include/icons
+cp -r -f --preserve=all . /usr/share/icons/hicolor/scalable/mimetypes/
 cd "$SCRIPTPATH"
-rm -rf linux-icon-builder
 sudo gtk-update-icon-cache /usr/share/icons/gnome/ -f
 
 echo "Installing handler for .nu files..."
